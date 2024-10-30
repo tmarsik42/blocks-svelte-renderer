@@ -1,1 +1,3 @@
-// Reexport your entry components here
+import BlocksRenderer from "$lib/BlocksRenderer.svelte";
+
+export { BlocksRenderer };
