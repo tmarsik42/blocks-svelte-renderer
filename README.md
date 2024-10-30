@@ -1,58 +1,52 @@
-# create-svelte
+# Blocks Svelte Renderer
 
-Everything you need to build a Svelte library, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+A Svelte implementation of [Strapi's blocks-react-renderer](https://github.com/strapi/blocks-react-renderer), adapted for Svelte 5. This library allows you to render Strapi's new Blocks rich text editor seamlessly within your Svelte applications.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## Installation
 
-## Creating a project
+You can install this package via npm:
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
+```
+npm install blocks-svelte-renderer
 ```
 
-## Developing
+## Usage
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Here's a basic example of how to use the Svelte Blocks Renderer in your Svelte application:
 
-```bash
-npm run dev
+```svelte
+<script>
+  import BlockRenderer from 'blocks-svelte-renderer';
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
+  const contentBlocks = [
+    { type: 'heading', level: 2, children: [{ text: 'Hello World' }] },
+    { type: 'paragraph', children: [{ text: 'This is a paragraph.' }] },
+    // Add more content blocks as needed
+  ];
+</script>
+
+<BlockRenderer content={contentBlocks} />
 ```
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+## Default Components
 
-## Building
+The following default components are included:
 
-To build your library:
+- `Heading`
+- `Paragraph`
+- `Image`
+- `Link`
+- `List`
+- `ListItem`
+- `Quote`
+- `Code`
 
-```bash
-npm run package
-```
+You can customize these components according to your application's requirements.
 
-To create a production version of your showcase app:
+## License
 
-```bash
-npm run build
-```
+This project is licensed under the MIT Expat License. Portions of the code are derived from [Strapi's blocks-react-renderer](https://github.com/strapi/blocks-react-renderer), which is also licensed under the MIT Expat License.
 
-You can preview the production build with `npm run preview`.
+## Acknowledgements
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```bash
-npm publish
-```
+- [Strapi](https://strapi.io/) for their original blocks-react-renderer, which inspired this implementation.
