@@ -1,6 +1,8 @@
 {
 	"name": "blocks-svelte-renderer",
+	"description": "A Svelte implementation of the Strapi block renderer, based on the original React version by Strapi.",
 	"version": "0.0.1",
+	"author": "Tadeáš Maršík <tad.marsik@gmail.com>",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build && npm run package",
@@ -44,5 +46,6 @@
 		"svelte-check": "^4.0.0",
 		"typescript": "^5.0.0",
 		"vite": "^5.0.11"
-	}
+	},
+	"license": "MIT"
 }
