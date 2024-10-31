@@ -1,5 +1,9 @@
 <script>
-    const { plainText } = $props();
+    const { children } = $props();
 </script>
 
-<pre><code>{plainText}</code></pre>
+<pre>
+  <code>
+    {@render children()}
+  </code>
+</pre>
