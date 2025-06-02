@@ -12,12 +12,16 @@
 
 <BlockComponent {...rest}>
     {#if children}
-        {#each children as child (child)}
-            {#if child.type === "text"}
-                <Text {...child} />
-            {:else}
-                <Block content={child} />
-            {/if}
-        {/each}
+        {#if type === "paragraph" && children.length === 1 && children[0].type === "text" && children[0].text === ""}
+            <br />
+        {:else}
+            {#each children as child (child)}
+                {#if child.type === "text"}
+                    <Text {...child} />
+                {:else}
+                    <Block content={child} />
+                {/if}
+            {/each}
+        {/if}
     {/if}
 </BlockComponent>
