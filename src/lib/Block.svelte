@@ -1,7 +1,7 @@
 <script lang="ts">
-    import Text from "./Text.svelte";
-    import Block from "./Block.svelte";
-    import defaultComponents from "./defaultComponents";
+    import Text from './Text.svelte';
+    import Block from './Block.svelte';
+    import defaultComponents from './defaultComponents';
 
     const { content } = $props();
 
@@ -10,18 +10,20 @@
     const BlockComponent = blocks[type];
 </script>
 
-<BlockComponent {...rest}>
-    {#if children}
-        {#if type === "paragraph" && children.length === 1 && children[0].type === "text" && children[0].text === ""}
-            <br />
-        {:else}
-            {#each children as child (child)}
-                {#if child.type === "text"}
-                    <Text {...child} />
-                {:else}
-                    <Block content={child} />
-                {/if}
-            {/each}
+{#if BlockComponent}
+    <BlockComponent {...rest}>
+        {#if children}
+            {#if type === 'paragraph' && children.length === 1 && children[0].type === 'text' && children[0].text === ''}
+                <br />
+            {:else}
+                {#each children as child (child)}
+                    {#if child.type === 'text'}
+                        <Text {...child} />
+                    {:else}
+                        <Block content={child} />
+                    {/if}
+                {/each}
+            {/if}
         {/if}
-    {/if}
-</BlockComponent>
+    </BlockComponent>
+{/if}
