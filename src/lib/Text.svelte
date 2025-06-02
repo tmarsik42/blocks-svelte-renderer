@@ -17,7 +17,7 @@
         code = false
     }: TextProps = $props();
 
-    let modifiedText = text;
+    let modifiedText = text.replace(/\n/g, '<br>');
 
     if (code) {
         modifiedText = `<code>${modifiedText}</code>`;

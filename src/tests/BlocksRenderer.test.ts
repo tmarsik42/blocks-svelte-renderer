@@ -92,8 +92,14 @@ describe('BlocksRenderer', () => {
             });
 
             const paragraph = screen.getByText(/First line/).closest('p');
-            const paragraphParts = paragraph?.innerHTML?.split('<br>');
-            expect(paragraphParts).toEqual(['First line', 'Second line']);
+
+            // // Remove all HTML comments (which Svelte uses)
+            const innerHTML = paragraph?.innerHTML;
+            const cleanedInnerHTML = innerHTML?.replace(/<!---->/g, '');
+            const paragraphParts = cleanedInnerHTML?.split('<br>');
+            const finalParagraphParts = paragraphParts?.map((part) => part.trim());
+
+            expect(finalParagraphParts).toEqual(['First line', 'Second line']);
         });
 
         it('renders quotes', () => {
