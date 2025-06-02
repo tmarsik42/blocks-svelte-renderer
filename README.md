@@ -2,6 +2,10 @@
 
 A Svelte implementation of [Strapi's blocks-react-renderer](https://github.com/strapi/blocks-react-renderer), adapted for Svelte 5. This library allows you to render Strapi's new Blocks rich text editor seamlessly within your Svelte applications.
 
+## 🚧 Work in Progress 🚧
+
+This project is currently under active development. While core functionalities are being implemented and tested, some features may not yet be fully stable or complete.
+
 ## Installation
 
 You can install this package via npm:
