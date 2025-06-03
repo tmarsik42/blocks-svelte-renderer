@@ -8,11 +8,9 @@ This project is currently under active development. While core functionalities a
 
 ## Installation
 
-You can install this package via npm:
+~~You can install this package via npm:~~
 
-```
-npm install blocks-svelte-renderer
-```
+**⚠️ Note:** This package has been published on npm without my involvement. I'm currently working on resolving the issue.
 
 ## Usage
 
