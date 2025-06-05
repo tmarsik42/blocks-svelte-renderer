@@ -8,9 +8,22 @@ This project is currently under active development. While core functionalities a
 
 ## Installation
 
-~~You can install this package via npm:~~
+You can install this package using your preferred package manager:
 
-**⚠️ Note:** This package has been published on npm without my involvement. I'm currently working on resolving the issue.
+### npm
+```bash
+  npm install -D blocks-svelte-renderer
+```
+
+### yarn
+```bash
+  yarn add -D blocks-svelte-renderer
+```
+
+### pnpm
+```bash
+  pnpm add -D blocks-svelte-renderer
+```
 
 ## Usage
 
