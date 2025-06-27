@@ -401,14 +401,7 @@ describe('BlocksRenderer', () => {
                                 }
                             ]
                         }
-                    ],
-                    blocks: {
-                        code: (props) => `
-              <pre>
-                <code>${props.plainText}</code>
-              </pre>
-            `
-                    }
+                    ]
                 }
             });
 
@@ -418,23 +411,12 @@ describe('BlocksRenderer', () => {
         it('parses headings to plain text', () => {
             render(BlocksRenderer, {
                 props: {
-                    content,
-                    blocks: {
-                        heading: (props) => {
-                            const HeadingLevel = `h${props.level}`; // In Svelte, this would dynamically create the tag
-                            return `
-                <${HeadingLevel} data-testid="heading-with-id" data-plain-text="${props.plainText}">
-                  ${props.children}
-                </${HeadingLevel}>
-              `;
-                        }
-                    }
+                    content
                 }
             });
 
-            const element = screen.getByTestId('heading-with-id');
-
-            expect(element.dataset.plainText).toBe('A cool website');
+            const element = screen.getByRole('heading');
+            expect(element).toHaveTextContent('A cool website');
         });
     });
 });

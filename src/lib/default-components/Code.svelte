@@ -1,9 +1,9 @@
 <script>
-    const { children } = $props();
+    const { plainText } = $props();
 </script>
 
 <pre>
   <code>
-    {@render children()}
+    {plainText}
   </code>
 </pre>

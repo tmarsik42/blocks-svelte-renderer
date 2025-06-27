@@ -1,7 +1,7 @@
 <script>
-    const { level, children } = $props();
+    const { level, plainText } = $props();
 </script>
 
 <svelte:element this={`h${level}`}>
-    {@render children()}
+    {plainText}
 </svelte:element>
