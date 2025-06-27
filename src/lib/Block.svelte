@@ -10,20 +10,19 @@
     const BlockComponent = blocks[type];
 </script>
 
-{#if BlockComponent}
+<!-- Check empty paragraph separately -->
+{#if type === 'paragraph' && children.length === 1 && children[0].type === 'text' && children[0].text === ''}
+    <br />
+{:else if BlockComponent}
     <BlockComponent {...rest}>
         {#if children}
-            {#if type === 'paragraph' && children.length === 1 && children[0].type === 'text' && children[0].text === ''}
-                <br />
-            {:else}
-                {#each children as child (child)}
-                    {#if child.type === 'text'}
-                        <Text {...child} />
-                    {:else}
-                        <Block content={child} />
-                    {/if}
-                {/each}
-            {/if}
+            {#each children as child (child)}
+                {#if child.type === 'text'}
+                    <Text {...child} />
+                {:else}
+                    <Block content={child} />
+                {/if}
+            {/each}
         {/if}
     </BlockComponent>
 {/if}
