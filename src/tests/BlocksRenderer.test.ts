@@ -326,7 +326,6 @@ describe('BlocksRenderer', () => {
                                     type: 'text',
                                     text: 'My text',
                                     bold: false,
-                                    // @ts-expect-error unknown is an invalid prop
                                     unknown: true
                                 }
                             ]
