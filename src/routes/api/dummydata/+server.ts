@@ -2,163 +2,118 @@ import { json, type RequestHandler } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async () => {
     const dummyData = [
-        {
+        // Headings
+        ...Array.from({ length: 6 }, (_, i) => ({
             type: 'heading',
-            level: 1,
-            children: [
-                {
-                    text: 'Heading 1',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'heading',
-            level: 2,
-            children: [
-                {
-                    text: 'Heading 2',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'heading',
-            level: 3,
-            children: [
-                {
-                    text: 'Heading 3',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'heading',
-            level: 4,
-            children: [
-                {
-                    text: 'Heading 4',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'heading',
-            level: 5,
-            children: [
-                {
-                    text: 'Heading 5',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'heading',
-            level: 6,
-            children: [
-                {
-                    text: 'Heading 6',
-                    type: 'text'
-                }
-            ]
-        },
+            level: i + 1,
+            children: [{ type: 'text', text: `Heading Level ${i + 1}` }]
+        })),
+
+        // Rich paragraph with inline styles
         {
             type: 'paragraph',
             children: [
+                { type: 'text', text: 'This is a ' },
+                { type: 'text', text: 'rich ', bold: true },
+                { type: 'text', text: 'text ', italic: true },
+                { type: 'text', text: 'example ', underline: true },
+                { type: 'text', text: 'with ' },
+                { type: 'text', text: 'multiple ', strikethrough: true },
+                { type: 'text', text: 'modifiers and ' },
                 {
-                    text: 'Normal text',
-                    type: 'text'
-                }
+                    type: 'link',
+                    url: 'https://svelte.dev',
+                    children: [{ type: 'text', text: 'a Svelte link' }]
+                },
+                { type: 'text', text: '.' }
             ]
         },
+
         {
             type: 'paragraph',
             children: [
+                { type: 'text', text: 'This paragraph mixes every inline modifier possible: ' },
+                { type: 'text', text: 'bold', bold: true },
+                { type: 'text', text: ', ' },
+                { type: 'text', text: 'italic', italic: true },
+                { type: 'text', text: ', ' },
+                { type: 'text', text: 'underline', underline: true },
+                { type: 'text', text: ', ' },
+                { type: 'text', text: 'bold + italic', bold: true, italic: true },
+                { type: 'text', text: ', ' },
                 {
-                    text: '',
-                    type: 'text'
+                    type: 'text',
+                    text: 'bold + italic + underline',
+                    bold: true,
+                    italic: true,
+                    underline: true
+                },
+                { type: 'text', text: ', ' },
+                { type: 'text', text: 'strikethrough', strikethrough: true },
+                { type: 'text', text: ', ' },
+                { type: 'text', text: 'code', code: true },
+                { type: 'text', text: ', and a ' },
+                {
+                    type: 'link',
+                    url: 'https://example.com',
+                    children: [
+                        { type: 'text', text: 'link inside bold italic', bold: true, italic: true }
+                    ]
+                },
+                { type: 'text', text: '.' }
+            ]
+        },
+
+        // Quote with nested paragraph and inline code
+        {
+            type: 'quote',
+            children: [
+                {
+                    type: 'paragraph',
+                    children: [
+                        {
+                            type: 'text',
+                            text: '“Code is like humor. When you have to explain it, it’s bad.” — '
+                        },
+                        { type: 'text', text: 'Cory House', italic: true }
+                    ]
+                },
+                {
+                    type: 'paragraph',
+                    children: [
+                        { type: 'text', text: 'Remember: ' },
+                        { type: 'text', text: 'keep it simple', code: true },
+                        { type: 'text', text: '.' }
+                    ]
                 }
             ]
         },
+
+        // Complex ordered list
         {
             type: 'list',
             format: 'ordered',
             children: [
                 {
                     type: 'list-item',
-                    children: [
-                        {
-                            text: 'item 1',
-                            type: 'text'
-                        }
-                    ]
+                    children: [{ type: 'text', text: 'First step' }]
                 },
                 {
                     type: 'list-item',
                     children: [
-                        {
-                            text: 'item 2',
-                            type: 'text'
-                        }
-                    ]
-                },
-                {
-                    type: 'list',
-                    format: 'ordered',
-                    children: [
-                        {
-                            type: 'list-item',
-                            children: [
-                                {
-                                    text: 'item 2a',
-                                    type: 'text'
-                                }
-                            ]
-                        },
-                        {
-                            type: 'list-item',
-                            children: [
-                                {
-                                    text: 'item 2b',
-                                    type: 'text'
-                                }
-                            ]
-                        },
+                        { type: 'text', text: 'Second step (with sublist):' },
                         {
                             type: 'list',
-                            format: 'ordered',
+                            format: 'unordered',
                             children: [
                                 {
                                     type: 'list-item',
-                                    children: [
-                                        {
-                                            text: 'item 2bI',
-                                            type: 'text'
-                                        }
-                                    ]
+                                    children: [{ type: 'text', text: 'Point A' }]
                                 },
                                 {
                                     type: 'list-item',
                                     children: [
-                                        {
-                                            text: 'item 2bII',
-                                            type: 'text'
-                                        }
-                                    ]
-                                },
-                                {
-                                    type: 'list',
-                                    format: 'ordered',
-                                    children: [
-                                        {
-                                            type: 'list-item',
-                                            children: [
-                                                {
-                                                    text: 'in too deep 1',
-                                                    type: 'text'
-                                                }
-                                            ]
-                                        },
+                                        { type: 'text', text: 'Point B with deep nesting' },
                                         {
                                             type: 'list',
                                             format: 'ordered',
@@ -167,191 +122,71 @@ export const GET: RequestHandler = async () => {
                                                     type: 'list-item',
                                                     children: [
                                                         {
-                                                            text: 'in too deep 1a',
-                                                            type: 'text'
+                                                            type: 'text',
+                                                            text: 'Subpoint B.1'
                                                         }
                                                     ]
                                                 },
                                                 {
-                                                    type: 'list',
-                                                    format: 'ordered',
+                                                    type: 'list-item',
                                                     children: [
                                                         {
-                                                            type: 'list-item',
+                                                            type: 'text',
+                                                            text: 'Subpoint B.2 (contains another sublist)'
+                                                        },
+                                                        {
+                                                            type: 'list',
+                                                            format: 'unordered',
                                                             children: [
                                                                 {
-                                                                    text: 'in too deep 1aI',
-                                                                    type: 'text'
+                                                                    type: 'list-item',
+                                                                    children: [
+                                                                        {
+                                                                            type: 'text',
+                                                                            text: 'Nested bullet a'
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                {
+                                                                    type: 'list-item',
+                                                                    children: [
+                                                                        {
+                                                                            type: 'text',
+                                                                            text: 'Nested bullet b'
+                                                                        }
+                                                                    ]
                                                                 }
-                                                            ]
+                                                            ],
+                                                            indentLevel: 3
                                                         }
-                                                    ],
-                                                    indentLevel: 5
+                                                    ]
                                                 }
                                             ],
-                                            indentLevel: 4
-                                        }
-                                    ],
-                                    indentLevel: 3
-                                }
-                            ],
-                            indentLevel: 2
-                        }
-                    ],
-                    indentLevel: 1
-                },
-                {
-                    type: 'list-item',
-                    children: [
-                        {
-                            text: 'item 3',
-                            type: 'text'
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            type: 'paragraph',
-            children: [
-                {
-                    text: '',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'list',
-            format: 'unordered',
-            children: [
-                {
-                    type: 'list-item',
-                    children: [
-                        {
-                            text: 'point A',
-                            type: 'text'
-                        }
-                    ]
-                },
-                {
-                    type: 'list-item',
-                    children: [
-                        {
-                            text: 'point B',
-                            type: 'text'
-                        }
-                    ]
-                },
-                {
-                    type: 'list-item',
-                    children: [
-                        {
-                            text: 'point C',
-                            type: 'text'
-                        }
-                    ]
-                },
-                {
-                    type: 'list',
-                    format: 'unordered',
-                    children: [
-                        {
-                            type: 'list-item',
-                            children: [
-                                {
-                                    text: 'point Ca',
-                                    type: 'text'
-                                }
-                            ]
-                        },
-                        {
-                            type: 'list',
-                            format: 'unordered',
-                            children: [
-                                {
-                                    type: 'list-item',
-                                    children: [
-                                        {
-                                            text: 'point Caa',
-                                            type: 'text'
-                                        }
-                                    ]
-                                },
-                                {
-                                    type: 'list',
-                                    format: 'unordered',
-                                    children: [
-                                        {
-                                            type: 'list-item',
-                                            children: [
-                                                {
-                                                    text: 'point Caaa',
-                                                    type: 'text'
-                                                }
-                                            ]
-                                        }
-                                    ],
-                                    indentLevel: 3
-                                },
-                                {
-                                    type: 'list-item',
-                                    children: [
-                                        {
-                                            text: 'point Cab',
-                                            type: 'text'
-                                        }
-                                    ]
-                                },
-                                {
-                                    type: 'list-item',
-                                    children: [
-                                        {
-                                            text: 'point Cac',
-                                            type: 'text'
+                                            indentLevel: 2
                                         }
                                     ]
                                 }
                             ],
-                            indentLevel: 2
+                            indentLevel: 1
                         }
-                    ],
-                    indentLevel: 1
+                    ]
                 },
                 {
                     type: 'list-item',
-                    children: [
-                        {
-                            text: 'point D',
-                            type: 'text'
-                        }
-                    ]
+                    children: [{ type: 'text', text: 'Final step ✅' }]
                 }
             ]
         },
+
+        // Code blocks
         {
-            type: 'paragraph',
+            type: 'code',
             children: [
                 {
-                    text: '',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'quote',
-            children: [
-                {
-                    text: "Penguin with a briefcase still can't file taxes.",
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'paragraph',
-            children: [
-                {
-                    text: '',
-                    type: 'text'
+                    type: 'text',
+                    text: `// Simple JS
+const hello = name => console.log('Hello, ' + name);
+hello('World');`
                 }
             ]
         },
@@ -359,103 +194,80 @@ export const GET: RequestHandler = async () => {
             type: 'code',
             children: [
                 {
-                    text: 'console.log("Hello code block!");',
-                    type: 'text'
+                    type: 'text',
+                    text: `<!-- HTML Example -->
+<section>
+  <h2>Sample HTML Block</h2>
+  <p>This is inside a code block.</p>
+</section>`
                 }
             ]
         },
+
+        // Table example
         {
-            type: 'paragraph',
+            type: 'table',
             children: [
                 {
-                    text: '',
-                    type: 'text'
-                }
-            ]
-        },
-        {
-            type: 'paragraph',
-            children: [
-                {
-                    text: 'In this paragraph I am going to test various text modifiers like ',
-                    type: 'text'
-                },
-                {
-                    bold: true,
-                    text: 'bold',
-                    type: 'text'
-                },
-                {
-                    text: ', ',
-                    type: 'text'
-                },
-                {
-                    text: 'italics',
-                    type: 'text',
-                    italic: true
-                },
-                {
-                    text: ', ',
-                    type: 'text'
-                },
-                {
-                    text: 'underline',
-                    type: 'text',
-                    underline: true
-                },
-                {
-                    text: ', ',
-                    type: 'text'
-                },
-                {
-                    text: 'strikethrough',
-                    type: 'text',
-                    strikethrough: true
-                },
-                {
-                    text: ', ',
-                    type: 'text'
-                },
-                {
-                    code: true,
-                    text: 'inline code',
-                    type: 'text'
-                },
-                {
-                    text: ' and a link to ',
-                    type: 'text'
-                },
-                {
-                    url: 'https://www.example.com',
-                    type: 'link',
+                    type: 'table-row',
                     children: [
-                        {
-                            text: 'example.com',
-                            type: 'text'
-                        }
+                        { type: 'table-header', children: [{ type: 'text', text: 'Feature' }] },
+                        { type: 'table-header', children: [{ type: 'text', text: 'Supported' }] }
                     ]
                 },
                 {
-                    text: '.',
-                    type: 'text'
+                    type: 'table-row',
+                    children: [
+                        { type: 'table-cell', children: [{ type: 'text', text: 'Links' }] },
+                        { type: 'table-cell', children: [{ type: 'text', text: '✅' }] }
+                    ]
+                },
+                {
+                    type: 'table-row',
+                    children: [
+                        { type: 'table-cell', children: [{ type: 'text', text: 'Nested Lists' }] },
+                        { type: 'table-cell', children: [{ type: 'text', text: '✅' }] }
+                    ]
                 }
             ]
         },
+
+        // Images
         {
-            type: 'paragraph',
-            children: [
-                {
-                    text: 'And an image example:',
-                    type: 'text'
-                }
-            ]
+            type: 'image',
+            image: {
+                url: 'https://via.placeholder.com/800x400',
+                alternativeText: 'Sample Image One'
+            }
         },
         {
             type: 'image',
             image: {
-                url: 'https://via.placeholder.com/600x400',
-                alternativeText: 'Lorem ipsum'
+                url: 'https://via.placeholder.com/400x400?text=Another+Image',
+                alternativeText: 'Square example image'
             }
+        },
+
+        // Paragraph with line breaks and emojis
+        {
+            type: 'paragraph',
+            children: [
+                {
+                    type: 'text',
+                    text: 'This paragraph includes multiple lines,\nmanual line breaks,\nand even some emoji 🎨🔥💡.'
+                }
+            ]
+        },
+
+        // Final paragraph
+        {
+            type: 'paragraph',
+            children: [
+                {
+                    type: 'text',
+                    text: 'End of dummy rich content. This should stress-test any Svelte renderer.'
+                }
+            ]
         }
     ];
 
