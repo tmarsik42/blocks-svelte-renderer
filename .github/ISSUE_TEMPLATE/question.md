@@ -6,7 +6,9 @@ labels: question
 ---
 
 **Question**
+
 Describe your question clearly.
 
 **Context**
+
 If applicable, share what you have tried or what documentation you read.
