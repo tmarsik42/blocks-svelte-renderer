@@ -44,7 +44,9 @@
     "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
     "test:unit": "vitest",
-    "test": "npm run test:unit -- --run"
+    "test": "npm run test:unit -- --run",
+    "custom-build-beta": "node scripts/build.js",
+    "custom-release-beta": "node scripts/release.js"
   },
   "peerDependencies": {
     "svelte": "^5.33.13"
