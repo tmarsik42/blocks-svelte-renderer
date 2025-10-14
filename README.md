@@ -31,7 +31,7 @@ or
 yarn add @your-scope/blocks-svelte-renderer
 ```
 
-## Quick Start
+## Basic usage
 ```sveltehtml
 <script lang="ts">
     import { BlocksRenderer } from 'blocks-svelte-renderer';
@@ -42,16 +42,49 @@ yarn add @your-scope/blocks-svelte-renderer
 <BlocksRenderer {content} />
 ```
 
+## Custom components
+You can override the default rendering by providing your own Svelte components for blocks and modifiers. Just pass what you want to customize—the rest uses the defaults.
 
-## Documentation
-TODO
 
-## Examples
-TODO
+```sveltehtml
+<script lang="ts">
+    import { BlocksRenderer } from 'blocks-svelte-renderer';
+    import GreenBold from './GreenBold.svelte';
+    import RedHeading from './RedHeading.svelte';
+
+    const content = [ { type: 'paragraph', children: [{ type: 'text', text: 'Hello, World!' }] } ];
+</script>
+
+<BlocksRenderer
+    content={data.dummydata}
+    blocks={{ heading: RedHeading }}
+    modifiers={{ bold: GreenBold }}
+/>
+```
+(see /routes/+page.svelte for example)
+
+**Blocks** are container elements that structure your content:
+- `paragraph`
+- `heading`
+- `quote`
+- `code`
+- `image`
+- `list`
+- `list-item`
+
+**Modifiers** are inline elements that style text:
+- `bold`
+- `italic`
+- `underline`
+- `strikethrough`
+- `code`
+- `link`
+
+Pass your components via the `blocks` and `modifiers` props. Block components receive a `node` prop with the block data, while modifier components receive children that need to be rendered.
 
 ## Contributing
 
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+Contributions are welcome! Please see the [Contributing Guide](CONTRIBUTING.md) for details.
 
 ## License
 
