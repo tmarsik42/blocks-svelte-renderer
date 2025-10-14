@@ -35,16 +35,13 @@
   ],
   "scripts": {
     "dev": "vite dev",
-    "build": "vite build && npm run package",
-    "preview": "vite preview",
+    "build": "npm run package",
     "package": "svelte-kit sync && svelte-package && publint",
     "prepublishOnly": "npm run package",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "format": "prettier --write .",
     "lint": "prettier --check . && eslint .",
-    "custom-build-beta": "node scripts/build.js",
-    "custom-release-beta": "node scripts/release.js",
+    "test": "vitest --config=vitest.browser.config.ts",
+    "release": "pnpm run lint && pnpm run check && pnpm run test && changeset publish",
     "test:browser": "vitest --config=vitest.browser.config.ts"
   },
   "peerDependencies": {
