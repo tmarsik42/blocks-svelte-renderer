@@ -6,7 +6,7 @@ export const GET: RequestHandler = async () => {
         ...Array.from({ length: 6 }, (_, i) => ({
             type: 'heading',
             level: i + 1,
-            children: [{ type: 'text', text: `Heading Level ${i + 1}` }]
+            children: [{ type: 'text', text: `Heading Level ${i + 1}` }],
         })),
 
         // Rich paragraph with inline styles
@@ -23,10 +23,10 @@ export const GET: RequestHandler = async () => {
                 {
                     type: 'link',
                     url: 'https://svelte.dev',
-                    children: [{ type: 'text', text: 'a Svelte link' }]
+                    children: [{ type: 'text', text: 'a Svelte link' }],
                 },
-                { type: 'text', text: '.' }
-            ]
+                { type: 'text', text: '.' },
+            ],
         },
 
         {
@@ -46,7 +46,7 @@ export const GET: RequestHandler = async () => {
                     text: 'bold + italic + underline',
                     bold: true,
                     italic: true,
-                    underline: true
+                    underline: true,
                 },
                 { type: 'text', text: ', ' },
                 { type: 'text', text: 'strikethrough', strikethrough: true },
@@ -57,11 +57,11 @@ export const GET: RequestHandler = async () => {
                     type: 'link',
                     url: 'https://example.com',
                     children: [
-                        { type: 'text', text: 'link inside bold italic', bold: true, italic: true }
-                    ]
+                        { type: 'text', text: 'link inside bold italic', bold: true, italic: true },
+                    ],
                 },
-                { type: 'text', text: '.' }
-            ]
+                { type: 'text', text: '.' },
+            ],
         },
 
         // Quote with nested paragraph and inline code
@@ -73,20 +73,12 @@ export const GET: RequestHandler = async () => {
                     children: [
                         {
                             type: 'text',
-                            text: '“Code is like humor. When you have to explain it, it’s bad.” — '
+                            text: '“Code is like humor. When you have to explain it, it’s bad.” — ',
                         },
-                        { type: 'text', text: 'Cory House', italic: true }
-                    ]
+                        { type: 'text', text: 'Cory House', italic: true },
+                    ],
                 },
-                {
-                    type: 'paragraph',
-                    children: [
-                        { type: 'text', text: 'Remember: ' },
-                        { type: 'text', text: 'keep it simple', code: true },
-                        { type: 'text', text: '.' }
-                    ]
-                }
-            ]
+            ],
         },
 
         // Complex ordered list
@@ -96,7 +88,7 @@ export const GET: RequestHandler = async () => {
             children: [
                 {
                     type: 'list-item',
-                    children: [{ type: 'text', text: 'First step' }]
+                    children: [{ type: 'text', text: 'First step' }],
                 },
                 {
                     type: 'list-item',
@@ -108,7 +100,7 @@ export const GET: RequestHandler = async () => {
                             children: [
                                 {
                                     type: 'list-item',
-                                    children: [{ type: 'text', text: 'Point A' }]
+                                    children: [{ type: 'text', text: 'Point A' }],
                                 },
                                 {
                                     type: 'list-item',
@@ -123,16 +115,16 @@ export const GET: RequestHandler = async () => {
                                                     children: [
                                                         {
                                                             type: 'text',
-                                                            text: 'Subpoint B.1'
-                                                        }
-                                                    ]
+                                                            text: 'Subpoint B.1',
+                                                        },
+                                                    ],
                                                 },
                                                 {
                                                     type: 'list-item',
                                                     children: [
                                                         {
                                                             type: 'text',
-                                                            text: 'Subpoint B.2 (contains another sublist)'
+                                                            text: 'Subpoint B.2 (contains another sublist)',
                                                         },
                                                         {
                                                             type: 'list',
@@ -143,39 +135,39 @@ export const GET: RequestHandler = async () => {
                                                                     children: [
                                                                         {
                                                                             type: 'text',
-                                                                            text: 'Nested bullet a'
-                                                                        }
-                                                                    ]
+                                                                            text: 'Nested bullet a',
+                                                                        },
+                                                                    ],
                                                                 },
                                                                 {
                                                                     type: 'list-item',
                                                                     children: [
                                                                         {
                                                                             type: 'text',
-                                                                            text: 'Nested bullet b'
-                                                                        }
-                                                                    ]
-                                                                }
+                                                                            text: 'Nested bullet b',
+                                                                        },
+                                                                    ],
+                                                                },
                                                             ],
-                                                            indentLevel: 3
-                                                        }
-                                                    ]
-                                                }
+                                                            indentLevel: 3,
+                                                        },
+                                                    ],
+                                                },
                                             ],
-                                            indentLevel: 2
-                                        }
-                                    ]
-                                }
+                                            indentLevel: 2,
+                                        },
+                                    ],
+                                },
                             ],
-                            indentLevel: 1
-                        }
-                    ]
+                            indentLevel: 1,
+                        },
+                    ],
                 },
                 {
                     type: 'list-item',
-                    children: [{ type: 'text', text: 'Final step ✅' }]
-                }
-            ]
+                    children: [{ type: 'text', text: 'Final step ✅' }],
+                },
+            ],
         },
 
         // Code blocks
@@ -186,9 +178,9 @@ export const GET: RequestHandler = async () => {
                     type: 'text',
                     text: `// Simple JS
 const hello = name => console.log('Hello, ' + name);
-hello('World');`
-                }
-            ]
+hello('World');`,
+                },
+            ],
         },
         {
             type: 'code',
@@ -199,9 +191,9 @@ hello('World');`
 <section>
   <h2>Sample HTML Block</h2>
   <p>This is inside a code block.</p>
-</section>`
-                }
-            ]
+</section>`,
+                },
+            ],
         },
 
         // Table example
@@ -212,40 +204,40 @@ hello('World');`
                     type: 'table-row',
                     children: [
                         { type: 'table-header', children: [{ type: 'text', text: 'Feature' }] },
-                        { type: 'table-header', children: [{ type: 'text', text: 'Supported' }] }
-                    ]
+                        { type: 'table-header', children: [{ type: 'text', text: 'Supported' }] },
+                    ],
                 },
                 {
                     type: 'table-row',
                     children: [
                         { type: 'table-cell', children: [{ type: 'text', text: 'Links' }] },
-                        { type: 'table-cell', children: [{ type: 'text', text: '✅' }] }
-                    ]
+                        { type: 'table-cell', children: [{ type: 'text', text: '✅' }] },
+                    ],
                 },
                 {
                     type: 'table-row',
                     children: [
                         { type: 'table-cell', children: [{ type: 'text', text: 'Nested Lists' }] },
-                        { type: 'table-cell', children: [{ type: 'text', text: '✅' }] }
-                    ]
-                }
-            ]
+                        { type: 'table-cell', children: [{ type: 'text', text: '✅' }] },
+                    ],
+                },
+            ],
         },
 
         // Images
         {
             type: 'image',
             image: {
-                url: 'https://via.placeholder.com/800x400',
-                alternativeText: 'Sample Image One'
-            }
+                url: 'https://picsum.photos/200/300',
+                alternativeText: 'Sample Image One',
+            },
         },
         {
             type: 'image',
             image: {
-                url: 'https://via.placeholder.com/400x400?text=Another+Image',
-                alternativeText: 'Square example image'
-            }
+                url: 'https://picsum.photos/400/400',
+                alternativeText: 'Square example image',
+            },
         },
 
         // Paragraph with line breaks and emojis
@@ -254,9 +246,9 @@ hello('World');`
             children: [
                 {
                     type: 'text',
-                    text: 'This paragraph includes multiple lines,\nmanual line breaks,\nand even some emoji 🎨🔥💡.'
-                }
-            ]
+                    text: 'This paragraph includes multiple lines,\nmanual line breaks,\nand even some emoji 🎨🔥💡.',
+                },
+            ],
         },
 
         // Final paragraph
@@ -265,10 +257,23 @@ hello('World');`
             children: [
                 {
                     type: 'text',
-                    text: 'End of dummy rich content. This should stress-test any Svelte renderer.'
-                }
-            ]
-        }
+                    text: 'End of dummy rich content. This should stress-test any Svelte renderer.',
+                },
+            ],
+        },
+        {
+            type: 'paragraph',
+            children: [],
+        },
+        {
+            type: 'paragraph',
+            children: [
+                {
+                    type: 'text',
+                    text: 'End of dummy rich content. This should stress-test any Svelte renderer.',
+                },
+            ],
+        },
     ];
 
     return json(dummyData);

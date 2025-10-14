@@ -1,4 +1,3 @@
-import BlocksRenderer from "$lib/BlocksRenderer.svelte";
+export { default as BlocksRenderer } from '$lib/components/BlocksRenderer.svelte';
 
-export default BlocksRenderer;
-export { BlocksRenderer };
+export * from '$lib/types/index.js';

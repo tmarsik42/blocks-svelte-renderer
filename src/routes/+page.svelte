@@ -1,5 +1,5 @@
 <script lang="ts">
-    import BlocksRenderer from '$lib/BlocksRenderer.svelte';
+    import BlocksRenderer from '$lib/components/BlocksRenderer.svelte';
 
     const { data } = $props();
 </script>
