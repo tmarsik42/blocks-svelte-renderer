@@ -44,19 +44,10 @@ yarn add @your-scope/blocks-svelte-renderer
 
 
 ## Documentation
-
-- [Getting Started](./docs/getting-started.md)
-- [API Reference](./docs/api-reference.md)
-
-- [Migration Guide](./docs/migration-guide.md)
+TODO
 
 ## Examples
-
-Check out our [examples directory](./examples/) for complete implementation examples:
-
-- [Basic Usage](./examples/basic/)
-- [Custom Components](./examples/custom-components/)
-- [SvelteKit Integration](./examples/sveltekit-integration/)
+TODO
 
 ## Contributing
 
@@ -68,5 +59,4 @@ MIT © [Tadeáš Maršík](LICENSE)
 
 ## Acknowledgments
 
-This project is inspired by and maintains compatibility with Strapi's official [blocks-react-renderer](https://github.com/strapi/blocks-react-renderer).
-
+This project is inspired by and strives to maintain compatibility with Strapi's official [blocks-react-renderer](https://github.com/strapi/blocks-react-renderer).

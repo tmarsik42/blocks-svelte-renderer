@@ -1,8 +1,10 @@
 <script lang="ts">
     import ModifierWrapper from './ModifierWrapper.svelte';
     import { getActiveModifiers } from '../utils/renderer.js';
+    import type { InlineRendererProps } from '$lib';
 
-    const { node, modifiers } = $props();
+    const { node, modifiers }: InlineRendererProps = $props();
+
     const parts = $derived(node.text.split('\n'));
     const activeMods = $derived(getActiveModifiers(node));
 </script>
