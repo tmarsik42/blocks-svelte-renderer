@@ -8,6 +8,8 @@ updates:
       ignore:
           - dependency-name: "svelte"
             update-types: [version-update:semver-major]
+          - dependency-name: "@sveltejs/kit"
+            update-types: [ version-update:semver-major ]
     - package-ecosystem: github-actions
       directory: /
       schedule:
