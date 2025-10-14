@@ -11,42 +11,69 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
             matrix:
-                node-version: [18, 20, 21]
+                node-version: [20, 22]
 
         steps:
             - uses: actions/checkout@v4
-            - uses: pnpm/action-setup@v2
+
+            - uses: pnpm/action-setup@v4
               with:
-                  version: 8
+                  version: 9
+
             - uses: actions/setup-node@v4
               with:
                   node-version: ${{ matrix.node-version }}
                   cache: 'pnpm'
 
-            - run: pnpm install --frozen-lockfile
-            - run: pnpm run lint
-            - run: pnpm run check
-            - run: pnpm run test
-            - run: pnpm run build
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
 
-    publish:
-        if: github.ref == 'refs/heads/main'
+            - name: Install Playwright browsers
+              run: pnpm exec playwright install --with-deps chromium
+
+            - name: Lint
+              run: pnpm run lint
+
+            - name: Type check
+              run: pnpm run check
+
+            - name: Test
+              run: pnpm run test
+
+            - name: Build
+              run: pnpm run build
+
+    release:
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         needs: test
         runs-on: ubuntu-latest
+        permissions:
+            contents: write
+            pull-requests: write
+
         steps:
             - uses: actions/checkout@v4
-            - uses: pnpm/action-setup@v2
+
+            - uses: pnpm/action-setup@v4
               with:
-                  version: 8
+                  version: 9
+
             - uses: actions/setup-node@v4
               with:
                   node-version: 20
                   cache: 'pnpm'
                   registry-url: 'https://registry.npmjs.org'
 
-            - run: pnpm install --frozen-lockfile
-            - run: pnpm run build
-            - run: pnpm changeset publish
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Build
+              run: pnpm run build
+
+            - name: Create Release PR or Publish
+              uses: changesets/action@v1
+              with:
+                  publish: pnpm changeset publish
               env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

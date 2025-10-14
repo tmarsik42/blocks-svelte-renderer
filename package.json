@@ -41,8 +41,7 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "lint": "prettier --check . && eslint .",
     "test": "vitest --config=vitest.browser.config.ts",
-    "release": "pnpm run lint && pnpm run check && pnpm run test && changeset publish",
-    "test:browser": "vitest --config=vitest.browser.config.ts"
+    "release": "pnpm run lint && pnpm run check && pnpm run test && changeset publish"
   },
   "peerDependencies": {
     "svelte": "^5.33.13"
