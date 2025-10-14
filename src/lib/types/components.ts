@@ -9,26 +9,28 @@ import type {
     ListItemBlockNode,
     InlineNode,
     RootNode,
+    TextNode,
 } from './blocks.js';
-import type { Snippet } from 'svelte';
+import type { Component } from 'svelte';
+import type { LinkProps, ModifierProps } from '$lib/types/modifiers.js';
 
 export interface BlockComponents {
-    paragraph: Snippet;
-    heading: Snippet;
-    quote: Snippet;
-    code: Snippet;
-    image: Snippet;
-    list: Snippet;
-    'list-item': Snippet;
+    paragraph: Component<ParagraphProps>;
+    heading: Component<HeadingProps>;
+    quote: Component<QuoteProps>;
+    code: Component<CodeProps>;
+    image: Component<ImageProps>;
+    list: Component<ListProps>;
+    'list-item': Component<ListItemProps>;
 }
 
 export interface ModifierComponents {
-    bold: Snippet;
-    italic: Snippet;
-    underline: Snippet;
-    strikethrough: Snippet;
-    code: Snippet;
-    link: Snippet;
+    bold: Component<ModifierProps>;
+    italic: Component<ModifierProps>;
+    underline: Component<ModifierProps>;
+    strikethrough: Component<ModifierProps>;
+    code: Component<ModifierProps>;
+    link: Component<LinkProps>;
 }
 
 export interface BlockComponentProps {
@@ -73,5 +75,10 @@ export interface ListItemProps extends BlockComponentProps {
 
 export interface InlineRendererProps {
     nodes: InlineNode[];
+    modifiers: ModifierComponents;
+}
+
+export interface TextRendererProps {
+    node: TextNode;
     modifiers: ModifierComponents;
 }

@@ -1,12 +1,12 @@
-import type { BlockNode, LinkNode, TextNode } from '../types/index.js';
+import type { BlockNode, InlineNode, LinkNode, TextNode } from '$lib/types/blocks.js';
 
 /** Text node guard */
-export function isTextNode(n: TextNode): boolean {
+export function isTextNode(n: InlineNode): n is TextNode {
     return n?.type === 'text';
 }
 
 /** Link node guard */
-export function isLinkNode(n: LinkNode): boolean {
+export function isLinkNode(n: InlineNode): n is LinkNode {
     return n?.type === 'link';
 }
 

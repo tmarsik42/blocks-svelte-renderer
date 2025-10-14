@@ -49,7 +49,7 @@
 {#if Array.isArray(content)}
     {#each content as node, index (generateBlockKey(node, index))}
         {#if resolvedBlocks[node.type]}
-            {@const Block = resolvedBlocks[node.type]}
+            {@const Block = resolvedBlocks[node.type] as unknown as import('svelte').Component}
             <Block {node} {index} modifiers={resolvedModifiers} />
         {:else}
             <div class="blocks-renderer-unknown">

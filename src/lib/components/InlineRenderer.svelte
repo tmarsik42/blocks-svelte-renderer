@@ -2,7 +2,7 @@
     import InlineRenderer from './InlineRenderer.svelte';
     import TextRenderer from './TextRenderer.svelte';
     import { isTextNode, isLinkNode } from '../utils/renderer.js';
-    import type { InlineRendererProps } from '$lib';
+    import type { InlineRendererProps } from '$lib/types/components.js';
 
     const { nodes, modifiers }: InlineRendererProps = $props();
 </script>
