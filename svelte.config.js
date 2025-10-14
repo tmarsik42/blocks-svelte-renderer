@@ -7,10 +7,6 @@ const config = {
     kit: {
         adapter: adapter(),
     },
-    package: {
-        exports: (file) => file === 'index.ts',
-        emitTypes: true,
-    },
 };
 
 export default config;
