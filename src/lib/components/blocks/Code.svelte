@@ -5,5 +5,5 @@
 </script>
 
 <pre><code
-        >{#each node.children as textNode}{textNode.text}{/each}</code
+        >{#each node.children as textNode, i (`${textNode.type}-${i}`)}{textNode.text}{/each}</code
     ></pre>

@@ -7,7 +7,7 @@
     const { nodes, modifiers }: InlineRendererProps = $props();
 </script>
 
-{#each nodes as node}
+{#each nodes as node, i (`${node.type}-${i}`)}
     {#if isTextNode(node)}
         <TextRenderer {node} {modifiers} />
     {:else if isLinkNode(node)}

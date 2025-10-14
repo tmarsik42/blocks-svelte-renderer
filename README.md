@@ -19,6 +19,7 @@
 - 🧪 **Well Tested** - Comprehensive test suite
 
 ## Installation
+
 ```
 npm install @your-scope/blocks-svelte-renderer
 
@@ -32,6 +33,7 @@ yarn add @your-scope/blocks-svelte-renderer
 ```
 
 ## Basic usage
+
 ```sveltehtml
 <script lang="ts">
     import { BlocksRenderer } from 'blocks-svelte-renderer';
@@ -43,8 +45,8 @@ yarn add @your-scope/blocks-svelte-renderer
 ```
 
 ## Custom components
-You can override the default rendering by providing your own Svelte components for blocks and modifiers. Just pass what you want to customize—the rest uses the defaults.
 
+You can override the default rendering by providing your own Svelte components for blocks and modifiers. Just pass what you want to customize—the rest uses the defaults.
 
 ```sveltehtml
 <script lang="ts">
@@ -61,9 +63,11 @@ You can override the default rendering by providing your own Svelte components f
     modifiers={{ bold: GreenBold }}
 />
 ```
+
 (see /routes/+page.svelte for example)
 
 **Blocks** are container elements that structure your content:
+
 - `paragraph`
 - `heading`
 - `quote`
@@ -73,6 +77,7 @@ You can override the default rendering by providing your own Svelte components f
 - `list-item`
 
 **Modifiers** are inline elements that style text:
+
 - `bold`
 - `italic`
 - `underline`

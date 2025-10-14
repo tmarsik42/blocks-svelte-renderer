@@ -7,7 +7,7 @@
 </script>
 
 <li>
-    {#each node.children as child}
+    {#each node.children as child, i (`${child.type}-${i}`)}
         {#if child.type === 'text' || child.type === 'link'}
             <InlineRenderer nodes={[child]} {modifiers} />
         {:else}

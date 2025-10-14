@@ -46,13 +46,13 @@ export interface ImageBlockNode {
         caption?: string;
         width?: number;
         height?: number;
-        formats?: Record<string, any>;
+        formats?: Record<string, unknown>;
         hash: string;
         ext: string;
         mime: string;
         size: number;
         provider: string;
-        provider_metadata?: any;
+        provider_metadata?: Record<string, unknown>;
         createdAt: string;
         updatedAt: string;
     };

@@ -1,20 +1,20 @@
-import type { BlockNode, TextNode } from '../types/index.js';
+import type { BlockNode, LinkNode, TextNode } from '../types/index.js';
 
 /** Text node guard */
-export function isTextNode(n: any): n is TextNode {
-    return n?.type === 'text' && typeof n.text === 'string';
+export function isTextNode(n: TextNode): boolean {
+    return n?.type === 'text';
 }
 
 /** Link node guard */
-export function isLinkNode(n: any): boolean {
-    return n?.type === 'link' && typeof n.url === 'string';
+export function isLinkNode(n: LinkNode): boolean {
+    return n?.type === 'link';
 }
 
 /** Collect active inline modifiers */
 export function getActiveModifiers(
     n: TextNode
 ): Array<'bold' | 'italic' | 'underline' | 'strikethrough' | 'code'> {
-    const m: any[] = [];
+    const m: Array<'bold' | 'italic' | 'underline' | 'strikethrough' | 'code'> = [];
     if (n.bold) m.push('bold');
     if (n.italic) m.push('italic');
     if (n.underline) m.push('underline');
@@ -30,8 +30,8 @@ export function mergeComponents<T>(def: T, over?: Partial<T>): T {
 
 /** Unique key per block */
 export function generateBlockKey(node: BlockNode, idx: number): string {
-    if (node.type === 'image' && (node as any).image.hash) {
-        return `img-${(node as any).image.hash}`;
+    if (node.type === 'image' && node.image.hash) {
+        return `img-${node.image.hash}`;
     }
     return `${node.type}-${idx}`;
 }

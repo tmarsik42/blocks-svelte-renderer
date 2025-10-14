@@ -5,12 +5,12 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 const config = {
     preprocess: vitePreprocess(),
     kit: {
-        adapter: adapter()
+        adapter: adapter(),
     },
     package: {
         exports: (file) => file === 'index.ts',
-        emitTypes: true
-    }
+        emitTypes: true,
+    },
 };
 
 export default config;

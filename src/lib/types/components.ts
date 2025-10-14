@@ -10,24 +10,25 @@ import type {
     InlineNode,
     RootNode,
 } from './blocks.js';
+import type { Snippet } from 'svelte';
 
 export interface BlockComponents {
-    paragraph: any;
-    heading: any;
-    quote: any;
-    code: any;
-    image: any;
-    list: any;
-    'list-item': any;
+    paragraph: Snippet;
+    heading: Snippet;
+    quote: Snippet;
+    code: Snippet;
+    image: Snippet;
+    list: Snippet;
+    'list-item': Snippet;
 }
 
 export interface ModifierComponents {
-    bold: any;
-    italic: any;
-    underline: any;
-    strikethrough: any;
-    code: any;
-    link: any;
+    bold: Snippet;
+    italic: Snippet;
+    underline: Snippet;
+    strikethrough: Snippet;
+    code: Snippet;
+    link: Snippet;
 }
 
 export interface BlockComponentProps {

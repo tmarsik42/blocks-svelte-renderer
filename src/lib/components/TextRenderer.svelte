@@ -9,7 +9,7 @@
     const activeMods = $derived(getActiveModifiers(node));
 </script>
 
-{#each parts as part, i}
+{#each parts as part, i (`${part.type}-${i}`)}
     <ModifierWrapper text={part} mods={activeMods} {modifiers} />
     {#if i < parts.length - 1}<br />{/if}
 {/each}
