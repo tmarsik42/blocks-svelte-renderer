@@ -1,6 +1,6 @@
 {
   "name": "blocks-svelte-renderer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Svelte renderer for Strapi's Blocks rich text editor",
   "keywords": [
     "svelte",
