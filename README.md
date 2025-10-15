@@ -1,67 +1,100 @@
 # Blocks Svelte Renderer
 
-A Svelte implementation of [Strapi's blocks-react-renderer](https://github.com/strapi/blocks-react-renderer), adapted for Svelte 5. This library allows you to render Strapi's new Blocks rich text editor seamlessly within your Svelte applications.
+[![npm version](https://img.shields.io/npm/v/blocks-svelte-renderer)](https://www.npmjs.com/package/blocks-svelte-renderer)
+[![npm downloads](https://img.shields.io/npm/dm/blocks-svelte-renderer)](https://www.npmjs.com/package/blocks-svelte-renderer)
+[![GitHub license](https://img.shields.io/github/license/tmarsik42/blocks-svelte-renderer)](https://github.com/tmarsik42/blocks-svelte-renderer/blob/main/LICENSE)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/tmarsik42/blocks-svelte-renderer/ci.yml?branch=main)](https://github.com/tmarsik42/blocks-svelte-renderer/actions)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![Svelte](https://img.shields.io/badge/Svelte-5-orange.svg)](https://svelte.dev/)
 
-## 🚧 Work in Progress 🚧
+> A modern, type-safe Svelte renderer for Strapi's Blocks rich text editor. Built for Svelte 5 with full TypeScript support.
 
-This project is currently under active development. While core functionalities are being implemented and tested, some features may not yet be fully stable or complete.
+## Features
+
+- 🚀 **Svelte 5 Ready** - Built with the latest Svelte runes system
+- 📝 **Type Safe** - Full TypeScript support with comprehensive type definitions
+- 🔧 **Zero Config** - Works out of the box with sensible defaults
+- 📦 **Lightweight** - Minimal bundle size with tree-shaking support
+- 🎨 **Customizable** - Override any block or modifier component
+- 🧪 **Well Tested** - Comprehensive test suite
 
 ## Installation
 
-You can install this package using your preferred package manager:
+```
+npm install @your-scope/blocks-svelte-renderer
 
-### npm
-```bash
-  npm install -D blocks-svelte-renderer
+or
+
+pnpm add @your-scope/blocks-svelte-renderer
+
+or
+
+yarn add @your-scope/blocks-svelte-renderer
 ```
 
-### yarn
-```bash
-  yarn add -D blocks-svelte-renderer
-```
+## Basic usage
 
-### pnpm
-```bash
-  pnpm add -D blocks-svelte-renderer
-```
+```sveltehtml
+<script lang="ts">
+    import { BlocksRenderer } from 'blocks-svelte-renderer';
 
-## Usage
-
-Here's a basic example of how to use the Svelte Blocks Renderer in your Svelte application:
-
-```svelte
-<script>
-  import BlockRenderer from 'blocks-svelte-renderer';
-
-  const contentBlocks = [
-    { type: 'heading', level: 2, children: [{ text: 'Hello World' }] },
-    { type: 'paragraph', children: [{ text: 'This is a paragraph.' }] },
-    // Add more content blocks as needed
-  ];
+    const content = [ { type: 'paragraph', children: [{ type: 'text', text: 'Hello, World!' }] } ];
 </script>
 
-<BlockRenderer content={contentBlocks} />
+<BlocksRenderer {content} />
 ```
 
-## Default Components
+## Custom components
 
-The following default components are included:
+You can override the default rendering by providing your own Svelte components for blocks and modifiers. Just pass what you want to customize—the rest uses the defaults.
 
-- `Heading`
-- `Paragraph`
-- `Image`
-- `Link`
-- `List`
-- `ListItem`
-- `Quote`
-- `Code`
+```sveltehtml
+<script lang="ts">
+    import { BlocksRenderer } from 'blocks-svelte-renderer';
+    import GreenBold from './GreenBold.svelte';
+    import RedHeading from './RedHeading.svelte';
 
-You can customize these components according to your application's requirements.
+    const content = [ { type: 'paragraph', children: [{ type: 'text', text: 'Hello, World!' }] } ];
+</script>
+
+<BlocksRenderer
+    content={data.dummydata}
+    blocks={{ heading: RedHeading }}
+    modifiers={{ bold: GreenBold }}
+/>
+```
+
+(see /routes/+page.svelte for example)
+
+**Blocks** are container elements that structure your content:
+
+- `paragraph`
+- `heading`
+- `quote`
+- `code`
+- `image`
+- `list`
+- `list-item`
+
+**Modifiers** are inline elements that style text:
+
+- `bold`
+- `italic`
+- `underline`
+- `strikethrough`
+- `code`
+- `link`
+
+Pass your components via the `blocks` and `modifiers` props. Block components receive a `node` prop with the block data, while modifier components receive children that need to be rendered.
+
+## Contributing
+
+Contributions are welcome! Please see the [Contributing Guide](CONTRIBUTING.md) for details.
 
 ## License
 
-This project is licensed under the MIT Expat License. Portions of the code are derived from [Strapi's blocks-react-renderer](https://github.com/strapi/blocks-react-renderer), which is also licensed under the MIT Expat License.
+MIT © [Tadeáš Maršík](LICENSE)
 
-## Acknowledgements
+## Acknowledgments
 
-- [Strapi](https://strapi.io/) for their original blocks-react-renderer, which inspired this implementation.
+This project is inspired by and strives to maintain compatibility with Strapi's official [blocks-react-renderer](https://github.com/strapi/blocks-react-renderer).
