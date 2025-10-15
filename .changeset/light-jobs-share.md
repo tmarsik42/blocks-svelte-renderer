@@ -20,7 +20,6 @@ This release introduces major structural improvements, feature additions, and CI
 
 - renamed and cleaned up test structure for consistency.
 
-
 ### Features
 
 - render modifiers as independent Svelte components,
@@ -31,7 +30,6 @@ This release introduces major structural improvements, feature additions, and CI
 
 - added examples for custom component usage
 
-
 ### Fixes
 
 - corrected rendering of quotes and line breaks,
@@ -39,7 +37,6 @@ This release introduces major structural improvements, feature additions, and CI
 - fixed renderer types,
 
 - addressed lint and Svelte check issues.
-
 
 ### Chore & CI
 
