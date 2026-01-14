@@ -21,15 +21,15 @@
 ## Installation
 
 ```
-npm install @your-scope/blocks-svelte-renderer
+npm install blocks-svelte-renderer
 
 or
 
-pnpm add @your-scope/blocks-svelte-renderer
+pnpm add blocks-svelte-renderer
 
 or
 
-yarn add @your-scope/blocks-svelte-renderer
+yarn add blocks-svelte-renderer
 ```
 
 ## Basic usage
