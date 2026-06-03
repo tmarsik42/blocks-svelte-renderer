@@ -31,7 +31,7 @@ export function mergeComponents<T>(def: T, over?: Partial<T>): T {
 /** Unique key per block */
 export function generateBlockKey(node: BlockNode, idx: number): string {
     if (node.type === 'image' && node.image.hash) {
-        return `img-${node.image.hash}`;
+        return `img-${node.image.hash}-${idx}`;
     }
     return `${node.type}-${idx}`;
 }
