@@ -1,5 +1,11 @@
 # blocks-svelte-renderer
 
+## 1.0.2
+
+### Patch Changes
+
+- fix: Add idx to img block key
+
 ## 1.0.1
 
 ### Patch Changes
