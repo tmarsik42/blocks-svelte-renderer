@@ -224,12 +224,13 @@ hello('World');`,
             ],
         },
 
-        // Images
+        // Images - includes a duplicate hash to test that keys remain unique
         {
             type: 'image',
             image: {
                 url: 'https://picsum.photos/200/300',
-                alternativeText: 'Sample Image One',
+                hash: 'test-image-hash-abc123',
+                alternativeText: 'Sample Image One (first use)',
             },
         },
         {
@@ -237,6 +238,14 @@ hello('World');`,
             image: {
                 url: 'https://picsum.photos/400/400',
                 alternativeText: 'Square example image',
+            },
+        },
+        {
+            type: 'image',
+            image: {
+                url: 'https://picsum.photos/200/300',
+                hash: 'test-image-hash-abc123',
+                alternativeText: 'Sample Image One (duplicate hash)',
             },
         },
 
