@@ -69,7 +69,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-svelte": "^3.12.4",
     "globals": "^16.4.0",
-    "jsdom": "^26.1.0",
+    "jsdom": "^27.0.1",
     "playwright": "^1.55.1",
     "prettier": "^3.5.3",
     "prettier-plugin-svelte": "^3.4.0",
